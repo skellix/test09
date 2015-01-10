@@ -4,7 +4,7 @@
 
 JNIEXPORT void JNICALL Java_scrlib_ScrLib_init
   (JNIEnv * env, jclass claz) {
-  init();
+  initscr();
 }
 
 JNIEXPORT void JNICALL Java_scrlib_ScrLib_endwin
@@ -15,7 +15,7 @@ JNIEXPORT void JNICALL Java_scrlib_ScrLib_endwin
 JNIEXPORT void JNICALL Java_scrlib_ScrLib_mvprint
   (JNIEnv * env, jobject claz, jint x, jint y, jstring s) {
   const char* utfStr = (*env)->GetStringUTFChars(env, s, 0);
-  mvprint((int) y, (int) x, s);
+  mvprintw((int) y, (int) x, utfStr);
   (*env)->ReleaseStringUTFChars(env, s, utfStr);
 }
 
